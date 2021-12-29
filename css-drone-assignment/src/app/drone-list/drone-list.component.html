@@ -1,1 +1,23 @@
-<p>drone-list works!</p>
+<div class="table-responsive mt-3" *ngIf="">
+    <table class="table">
+        <thead>
+                <tr>
+                    <th>Code</th>
+                    <th>Name</th>
+                    <th>Unit Price</th>
+                    <th>Release Date</th>
+                    <th>Star Rating</th>
+                </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let product of products">
+                <td>{{product.code | lowercase}}</td>
+                <td>{{product.name | uppercase}}</td>
+                <td>{{product.price | currency:'EUR':'symbol':'1.2-2'}}</td>
+                <td>{{product.releaseDate | date}}</td>
+                <td>{{product.starRating}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
