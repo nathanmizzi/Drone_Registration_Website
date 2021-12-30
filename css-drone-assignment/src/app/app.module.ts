@@ -4,11 +4,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DroneListComponent } from './drone-list/drone-list.component';
+import { AddDroneComponent } from './add-drone/add-drone.component';
+import { EditDroneComponent } from './edit-drone/edit-drone.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DroneListComponent
+    DroneListComponent,
+    AddDroneComponent,
+    EditDroneComponent
   ],
   imports: [
     BrowserModule,

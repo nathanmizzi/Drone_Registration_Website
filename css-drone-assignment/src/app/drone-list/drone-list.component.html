@@ -1,22 +1,23 @@
-<div class="table-responsive mt-3" *ngIf="">
+<div class="table-responsive mt-3">
     <table class="table">
         <thead>
                 <tr>
-                    <th>Code</th>
-                    <th>Name</th>
-                    <th>Unit Price</th>
-                    <th>Release Date</th>
-                    <th>Star Rating</th>
+                    <th>Serial Number</th>
+                    <th>Brand</th>
+                    <th>Owner's Name</th>
+                    <th>Owner's Surname</th>
                 </tr>
         </thead>
 
         <tbody>
-            <tr *ngFor="let product of products">
-                <td>{{product.code | lowercase}}</td>
-                <td>{{product.name | uppercase}}</td>
-                <td>{{product.price | currency:'EUR':'symbol':'1.2-2'}}</td>
-                <td>{{product.releaseDate | date}}</td>
-                <td>{{product.starRating}}</td>
+            <tr *ngFor="let drone of drones">
+                <td>{{drone.serialNumber}}</td>
+                <td>{{drone.brand}}</td>
+                <td>{{drone.ownerFirstName}}</td>
+                <td>{{drone.ownerLastName}}</td>
+                <td><button class="btn btn-primary" (click)="getDroneDetails(drone.id)">View</button></td>
+                <td><button class="btn btn-primary" (click)="updateDroneDetails(drone.id)">Update</button></td>
+                <td><button class="btn btn-primary">Delete</button></td>
             </tr>
         </tbody>
     </table>
