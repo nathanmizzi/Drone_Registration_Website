@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AngularFirestore } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
 import { Drone } from '../dto/drone.dto';
 
@@ -11,11 +10,10 @@ import { Drone } from '../dto/drone.dto';
 })
 export class DroneDetailComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute,private router: Router,db: AngularFirestore) { 
-    this.items = db.collection('/items').valueChanges();
-  }
-
-  items: Observable<any[]>;
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router
+  ) { }
 
   drone: Drone = new Drone(
     1,
