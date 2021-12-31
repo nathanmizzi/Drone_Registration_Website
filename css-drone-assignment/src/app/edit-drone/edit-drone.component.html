@@ -1,1 +1,94 @@
-<p>edit-drone works!</p>
+<form>
+
+    <div class="form-group row">
+      <label for="serialNumber" class="col-sm-2 col-form-label">Serial Number</label>
+      
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="serialNumber" value={{drone.serialNumber}}>
+      </div>
+    </div>
+
+    <div class="form-group row mt-3">
+        <label for="modelNumber" class="col-sm-2 col-form-label">Model Number</label>
+
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="modelNumber" value={{drone.modelNumber}}>
+        </div>
+    </div>
+
+    <div class="form-group row mt-3">
+      <label for="brand" class="col-sm-2 col-form-label">Brand</label>
+
+      <div class="col-sm-10">
+        <select name="brand" id="brand"> 
+            <option id="DJI" value="DJI">DJI</option>
+            <option id="Yuneec" value="Yuneec">Yuneec</option>
+            <option id="UVify" value="UVify">UVify</option>
+            <option id="Hubsan" value="Hubsan">Hubsan</option>
+            <option id="Parrot" value="Parrot">Parrot</option>
+            <option id="Freefly" value="Freefly">Freefly</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group row mt-3">
+        <label for="model" class="col-sm-2 col-form-label">Model</label>
+
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="model" value={{drone.model}}>
+        </div>
+    </div>
+
+    <div class="form-group row mt-3">
+        <label for="ownerIdNumber" class="col-sm-2 col-form-label">Owner's ID Number</label>
+
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="ownerIdNumber" value={{drone.ownerIdNumber}}>
+        </div>
+    </div>
+
+    <div class="form-group row mt-3">
+        <label for="ownerFirstName" class="col-sm-2 col-form-label">Owner's First Name</label>
+
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="ownerFirstName" value="{{drone.ownerFirstName}}">
+        </div>
+    </div>
+
+    <div class="form-group row mt-3">
+        <label for="ownerLastName" class="col-sm-2 col-form-label">Owner's Last Name</label>
+
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="ownerLastName" value={{drone.ownerLastName}}>
+        </div>
+    </div>
+
+    <div class="form-group row mt-3">
+        <label for="ownerContactNumberCountryCode" class="col-sm-2 col-form-label">Owner's Contact Number Country Code</label>
+
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="ownerContactNumberCountryCode" value={{drone.ownerContactNumberCountryCode}}>
+        </div>
+    </div>
+
+    <div class="form-group row mt-3">
+        <label for="ownerContactNumber" class="col-sm-2 col-form-label">Owner's Contact Number</label>
+
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="ownerContactNumber" value={{drone.ownerContactNumber}}>
+        </div>
+    </div>
+
+    <div class="form-group row mt-3">
+        <label for="ownerEmail" class="col-sm-2 col-form-label">Owner's Email</label>
+
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="ownerEmail" value={{drone.ownerEmail}}>
+        </div>
+    </div>
+
+
+    <p class="mt-5">**************************************************************************************</p>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
