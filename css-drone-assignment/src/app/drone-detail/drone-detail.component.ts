@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import { Drone } from '../dto/drone.dto';
+
+import { DroneDataService } from '../services/drone-data.service';
 
 @Component({
   selector: 'app-drone-detail',
@@ -12,33 +13,49 @@ export class DroneDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private droneService: DroneDataService
   ) { }
 
-  drone: Drone = new Drone(
-    1,
-    "12345",
-    "678",
-    "DJI",
-    "Flyer-500",
-    "274417L",
-    "Joseph",
-    "Callahan",
-    356,
-    77825394,
-    "JCallahan@gmail.com"
-  );
+  drone: Drone;
+  droneList: Drone[] = [];
 
   ngOnInit(): void {
-    this.initDrone(); //To Be changed with API call
+    let id: number = Number(this.route.snapshot.paramMap.get('id'));
+    this.initDroneVariables(id);
+  }
+
+  initDroneVariables(droneID: number): void{
+    this.droneService.getDrones().subscribe(dronesFromDb => {
+      dronesFromDb.forEach(drone => {
+        this.droneList.push(drone);
+        console.log('Added a Drone!');
+      });
+    });
+
+    this.droneList.forEach(droneToCheck => {
+      if(droneToCheck.id == droneID){
+        this.drone = droneToCheck;
+      }
+    });
+
+    this.drone = new Drone(
+      1,
+      "12345",
+      "678",
+      "Hubsan",
+      "Flyer-500",
+      "274417L",
+      "Joseph",
+      "Callahan",
+      356,
+      77825394,
+      "JCallahan@gmail.com"
+    );
+
   }
 
   onBackButtonClick(): void {
     this.router.navigate(['/drones']);
   }
-
-  initDrone(): void{
-
-  }
-
 }

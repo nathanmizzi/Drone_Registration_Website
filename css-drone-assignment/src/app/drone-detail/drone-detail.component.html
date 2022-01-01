@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card" *ngIf="drone != null">
     <div class="card-header">
         Drone ID: {{drone.id}}
     </div>
@@ -53,7 +53,7 @@
 
         <div class="row">
             <div class="col-md-2">Owner's Email:</div>
-            <div class="col-md-10">{{drone.ownerEmail}}</div>
+            <div class="col-md-10">{{droneList[0].ownerEmail}}</div>
         </div>
     </div>
 

@@ -11,10 +11,10 @@ export class AppComponent{
   constructor(
     private route: ActivatedRoute,
     private router: Router,
+
   ) { }
 
   title = 'Drone Registry';
-
 
 
 }

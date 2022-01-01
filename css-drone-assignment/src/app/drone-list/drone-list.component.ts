@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-
-import { Observable } from 'rxjs';
 import { Drone } from '../dto/drone.dto';
+import { DroneDataService } from '../services/drone-data.service';
 
 @Component({
   selector: 'app-drone-list',
@@ -11,11 +10,8 @@ import { Drone } from '../dto/drone.dto';
 })
 export class DroneListComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute,private router: Router,/*db: AngularFirestore*/) { 
-    //this.dronesFromDb = db.collection('/drones').valueChanges();
+  constructor(private route: ActivatedRoute,private router: Router,private droneService: DroneDataService) { 
   }
-
-  //dronesFromDb: Observable<any[]>;
 
   drones: Drone[]  =[];
 
@@ -24,19 +20,12 @@ export class DroneListComponent implements OnInit {
   }
 
   initialiseDroneArray(): void{
-    this.drones.push(new Drone(
-      1,
-      "12345",
-      "678",
-      "DJI",
-      "Flyer-500",
-      "274417L",
-      "Joseph",
-      "Callahan",
-      356,
-      77825394,
-      "JCallahan@gmail.com"
-    ));
+    this.droneService.getDrones().subscribe(dronesFromDb => {
+      dronesFromDb.forEach(drone => {
+        this.drones.push(drone);
+        console.log(dronesFromDb);
+      });
+    });
   }
 
   getDroneDetails(droneID: number){
