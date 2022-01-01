@@ -10,7 +10,9 @@ import { DroneDataService } from '../services/drone-data.service';
 })
 export class DroneListComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute,private router: Router,private droneService: DroneDataService) { 
+  constructor(private route: ActivatedRoute,
+    private router: Router,
+    private droneService: DroneDataService) { 
   }
 
   drones: Drone[]  =[];
@@ -20,18 +22,20 @@ export class DroneListComponent implements OnInit {
   }
 
   initialiseDroneArray(): void{
-    this.droneService.getDrones().subscribe(dronesFromDb => {
-      dronesFromDb.forEach(drone => {
-        this.drones.push(drone);
-      });
+    this.droneService.getDrones().subscribe((res: Drone[]) => {
+      this.drones = res;
     });
   }
 
-  getDroneDetails(droneID: number){
+  deleteDrone(droneID: string){
+    this.droneService.deleteDrone(droneID);
+  }
+
+  getDroneDetails(droneID: string){
     this.router.navigate(['/drones/' + droneID]);
   }
 
-  updateDroneDetails(droneID: number){
+  updateDroneDetails(droneID: string){
     this.router.navigate(['/drones/edit/' + droneID]);
   }
 

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Drone } from '../dto/drone.dto';
 
 @Injectable({
@@ -8,24 +9,39 @@ import { Drone } from '../dto/drone.dto';
 })
 
 export class DroneDataService {
-  dronesCollection: AngularFirestoreCollection<Drone> | undefined;
+  dronesCollection: AngularFirestoreCollection<Drone>;
   drones: Observable<any[]>;
-  droneToSend: Observable<Drone>;
+  droneDoc: AngularFirestoreDocument;
 
   constructor(public afs: AngularFirestore) { 
-    this.drones = this.afs.collection('drones').valueChanges();
+
+    this.dronesCollection = this.afs.collection('drones');
+
+    this.drones = this.dronesCollection.snapshotChanges().pipe(map(changes => {
+      return changes.map(a => {
+        const data = a.payload.doc.data() as Drone;
+        data.id = a.payload.doc.id;
+        return data
+      });
+    }));
   }
 
   getDrones(): Observable<Drone[]>{
     return this.drones;
   }
 
-  getDrone(id: number): Observable<Drone[]>{
+  getDrone(id: string): Observable<Drone>{
+    var droneToReturn = this.afs.collection<Drone>('drones').doc(id).valueChanges();
+    return droneToReturn;
+  }
 
-    var test = this.afs.collection<Drone>('drones', ref => ref.where('id', '==', id)).valueChanges();
+  addDrone(droneToAdd: Drone){
+    this.dronesCollection.add(droneToAdd);
+  }
 
-    return test;
-
+  deleteDrone(droneIdToDelete: string){
+    this.droneDoc = this.afs.doc('drones/' + droneIdToDelete);
+    this.droneDoc.delete();
   }
 
 }

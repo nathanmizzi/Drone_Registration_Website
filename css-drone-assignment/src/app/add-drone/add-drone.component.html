@@ -1,89 +1,128 @@
-<form>
+<h1 class="text-center">Add Drone</h1>
 
-    <div class="form-group row">
-      <label for="serialNumber" class="col-sm-2 col-form-label">Serial Number</label>
-      
-      <div class="col-sm-10">
-        <input type="text" class="form-control" id="serialNumber">
-      </div>
-    </div>
+<form novalidate class="mt-3" [formGroup]="droneForm" (ngSubmit)="submitDroneForm()">
+    <fieldset>
+        <div class="form-group row">
+        <label for="serialNumber" class="col-sm-2 col-form-label" >Serial Number</label>
+        
+        <div class="col-sm-10">
+            <input type="text" 
+            class="form-control" 
+            id="serialNumber"
+            formControlName="serialNumber"
+            placeholder="Enter Serial Number">
+        </div>
+        </div>
 
-    <div class="form-group row mt-3">
-        <label for="modelNumber" class="col-sm-2 col-form-label">Model Number</label>
+        <div class="form-group row mt-3">
+            <label for="modelNumber" class="col-sm-2 col-form-label">Model Number</label>
+
+            <div class="col-sm-10">
+                <input type="text" 
+                class="form-control" 
+                id="modelNumber"
+                formControlName="modelNumber"
+                placeholder="Enter Model Number">
+            </div>
+        </div>
+
+        <div class="form-group row mt-3">
+        <label for="brand" class="col-sm-2 col-form-label">Brand</label>
 
         <div class="col-sm-10">
-            <input type="text" class="form-control" id="modelNumber">
+            <select name="brand" id="brand" formControlName="brand">
+                <option value="dji">DJI</option>
+                <option value="Yuneec">Yuneec</option>
+                <option value="UVify">UVify</option>
+            </select>
         </div>
-    </div>
-
-    <div class="form-group row mt-3">
-      <label for="brand" class="col-sm-2 col-form-label">Brand</label>
-
-      <div class="col-sm-10">
-        <select name="brand" id="brand">
-            <option value="dji">DJI</option>
-            <option value="Yuneec">Yuneec</option>
-            <option value="UVify">UVify</option>
-        </select>
-      </div>
-    </div>
-
-    <div class="form-group row mt-3">
-        <label for="model" class="col-sm-2 col-form-label">Model</label>
-
-        <div class="col-sm-10">
-            <input type="text" class="form-control" id="model">
         </div>
-    </div>
 
-    <div class="form-group row mt-3">
-        <label for="ownerIdNumber" class="col-sm-2 col-form-label">Owner's ID Number</label>
+        <div class="form-group row mt-3">
+            <label for="model" class="col-sm-2 col-form-label">Model</label>
 
-        <div class="col-sm-10">
-            <input type="text" class="form-control" id="ownerIdNumber">
+            <div class="col-sm-10">
+                <input type="text" 
+                class="form-control" 
+                id="model"
+                formControlName="model"
+                placeholder="Enter Model">
+            </div>
         </div>
-    </div>
 
-    <div class="form-group row mt-3">
-        <label for="ownerFirstName" class="col-sm-2 col-form-label">Owner's First Name</label>
+        <div class="form-group row mt-3">
+            <label for="ownerIdNumber" class="col-sm-2 col-form-label">Owner's ID Number</label>
 
-        <div class="col-sm-10">
-            <input type="text" class="form-control" id="ownerFirstName">
+            <div class="col-sm-10">
+                <input type="text" 
+                class="form-control" 
+                id="ownerIdNumber"
+                formControlName="ownerIdNumber"
+                placeholder="Enter ID Number">
+            </div>
         </div>
-    </div>
 
-    <div class="form-group row mt-3">
-        <label for="ownerLastName" class="col-sm-2 col-form-label">Owner's Last Name</label>
+        <div class="form-group row mt-3">
+            <label for="ownerFirstName" class="col-sm-2 col-form-label">Owner's First Name</label>
 
-        <div class="col-sm-10">
-            <input type="text" class="form-control" id="ownerLastName">
+            <div class="col-sm-10">
+                <input type="text" 
+                class="form-control" 
+                id="ownerFirstName"
+                formControlName="ownerFirstName"
+                placeholder="Enter First Name">
+            </div>
         </div>
-    </div>
 
-    <div class="form-group row mt-3">
-        <label for="ownerContactNumberCountryCode" class="col-sm-2 col-form-label">Owner's Contact Number Country Code</label>
+        <div class="form-group row mt-3">
+            <label for="ownerLastName" class="col-sm-2 col-form-label">Owner's Last Name</label>
 
-        <div class="col-sm-10">
-            <input type="text" class="form-control" id="ownerContactNumberCountryCode">
+            <div class="col-sm-10">
+                <input type="text" 
+                class="form-control" 
+                id="ownerLastName"
+                formControlName="ownerLastName"
+                placeholder="Enter Last Name">
+            </div>
         </div>
-    </div>
 
-    <div class="form-group row mt-3">
-        <label for="ownerContactNumber" class="col-sm-2 col-form-label">Owner's Contact Number</label>
+        <div class="form-group row mt-3">
+            <label for="ownerContactNumberCountryCode" class="col-sm-2 col-form-label">Owner's Contact Number Country Code</label>
 
-        <div class="col-sm-10">
-            <input type="text" class="form-control" id="ownerContactNumber">
+            <div class="col-sm-10">
+                <input type="text" 
+                class="form-control" 
+                id="ownerContactNumberCountryCode"
+                formControlName="ownerContactNumberCountryCode"
+                placeholder="Enter Country Code">
+            </div>
         </div>
-    </div>
 
-    <div class="form-group row mt-3">
-        <label for="ownerEmail" class="col-sm-2 col-form-label">Owner's Email</label>
+        <div class="form-group row mt-3">
+            <label for="ownerContactNumber" class="col-sm-2 col-form-label">Owner's Contact Number</label>
 
-        <div class="col-sm-10">
-            <input type="text" class="form-control" id="ownerEmail">
+            <div class="col-sm-10">
+                <input type="text" 
+                class="form-control" 
+                id="ownerContactNumber"
+                formControlName="ownerContactNumber"
+                placeholder="Enter Contact Number">
+            </div>
         </div>
-    </div>
 
+        <div class="form-group row mt-3">
+            <label for="ownerEmail" class="col-sm-2 col-form-label">Owner's Email</label>
+
+            <div class="col-sm-10">
+                <input type="text" 
+                class="form-control" 
+                id="ownerEmail"
+                formControlName="ownerEmail"
+                placeholder="Enter Email">
+            </div>
+        </div>
+
+    </fieldset>
 
     <p class="mt-5">**************************************************************************************</p>
 

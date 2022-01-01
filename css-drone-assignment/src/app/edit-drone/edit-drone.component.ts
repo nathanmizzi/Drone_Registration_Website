@@ -11,7 +11,7 @@ export class EditDroneComponent implements OnInit {
   constructor() { }
 
   drone: Drone = new Drone(
-    1,
+    "1",
     "12345",
     "678",
     "Hubsan",

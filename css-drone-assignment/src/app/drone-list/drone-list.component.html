@@ -17,7 +17,7 @@
                 <td>{{drone.ownerLastName}}</td>
                 <td><button class="btn btn-primary" (click)="getDroneDetails(drone.id)">View</button></td>
                 <td><button class="btn btn-primary" (click)="updateDroneDetails(drone.id)">Update</button></td>
-                <td><button class="btn btn-primary">Delete</button></td>
+                <td><button class="btn btn-primary" (click)="deleteDrone(drone.id)">Delete</button></td>
             </tr>
         </tbody>
     </table>

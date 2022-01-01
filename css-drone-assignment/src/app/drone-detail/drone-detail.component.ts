@@ -20,15 +20,13 @@ export class DroneDetailComponent implements OnInit {
   drone: Drone;
 
   ngOnInit(): void {
-    let id: number = Number(this.route.snapshot.paramMap.get('id'));
+    let id: string = this.route.snapshot.paramMap.get('id');
     this.initDrone(id);
   }
 
-  initDrone(droneID: number){
-    this.droneService.getDrone(droneID).subscribe(dronesFromDb => {
-      dronesFromDb.forEach(droneFromDb => {
+  initDrone(droneID: string){
+    this.droneService.getDrone(droneID).subscribe(droneFromDb => {
         this.drone = droneFromDb;
-      });
     });
   }
 
