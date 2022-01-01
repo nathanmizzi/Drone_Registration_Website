@@ -23,7 +23,6 @@ export class DroneListComponent implements OnInit {
     this.droneService.getDrones().subscribe(dronesFromDb => {
       dronesFromDb.forEach(drone => {
         this.drones.push(drone);
-        console.log(dronesFromDb);
       });
     });
   }

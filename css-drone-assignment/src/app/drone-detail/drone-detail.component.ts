@@ -18,41 +18,18 @@ export class DroneDetailComponent implements OnInit {
   ) { }
 
   drone: Drone;
-  droneList: Drone[] = [];
 
   ngOnInit(): void {
     let id: number = Number(this.route.snapshot.paramMap.get('id'));
-    this.initDroneVariables(id);
+    this.initDrone(id);
   }
 
-  initDroneVariables(droneID: number): void{
-    this.droneService.getDrones().subscribe(dronesFromDb => {
-      dronesFromDb.forEach(drone => {
-        this.droneList.push(drone);
-        console.log('Added a Drone!');
+  initDrone(droneID: number){
+    this.droneService.getDrone(droneID).subscribe(dronesFromDb => {
+      dronesFromDb.forEach(droneFromDb => {
+        this.drone = droneFromDb;
       });
     });
-
-    this.droneList.forEach(droneToCheck => {
-      if(droneToCheck.id == droneID){
-        this.drone = droneToCheck;
-      }
-    });
-
-    this.drone = new Drone(
-      1,
-      "12345",
-      "678",
-      "Hubsan",
-      "Flyer-500",
-      "274417L",
-      "Joseph",
-      "Callahan",
-      356,
-      77825394,
-      "JCallahan@gmail.com"
-    );
-
   }
 
   onBackButtonClick(): void {
