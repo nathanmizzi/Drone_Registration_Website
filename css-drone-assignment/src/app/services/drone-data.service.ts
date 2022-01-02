@@ -44,4 +44,9 @@ export class DroneDataService {
     this.droneDoc.delete();
   }
 
+  updateDrone(drone: Drone){
+    this.droneDoc = this.afs.doc('drones/' + drone.id);
+    this.droneDoc.update(drone);
+  }
+
 }

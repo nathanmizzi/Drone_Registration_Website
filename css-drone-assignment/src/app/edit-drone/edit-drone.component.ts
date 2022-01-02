@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Drone } from '../dto/drone.dto';
 import { DroneDataService } from '../services/drone-data.service';
 
@@ -13,8 +13,9 @@ import { DroneDataService } from '../services/drone-data.service';
 export class EditDroneComponent implements OnInit {
 
   constructor(private droneService: DroneDataService,
-     private route: ActivatedRoute,
-      private formBuilder: FormBuilder) { }
+  private route: ActivatedRoute,
+  private router: Router,
+  private formBuilder: FormBuilder) { }
 
   drone: Drone;
   droneBrands: string[] = [];
@@ -51,7 +52,13 @@ export class EditDroneComponent implements OnInit {
 
   submitEditDroneForm(){
     this.drone = this.editDroneForm.value;
-    console.log(this.drone);
+    this.drone.id = this.route.snapshot.paramMap.get('id');
+    this.droneService.updateDrone(this.drone);
+    this.getDroneList();
    }
+
+   getDroneList(){
+    this.router.navigate(['/drones']);
+  }
 
 }

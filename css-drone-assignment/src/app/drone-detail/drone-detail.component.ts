@@ -18,10 +18,11 @@ export class DroneDetailComponent implements OnInit {
   ) { }
 
   drone: Drone;
+  droneID: string;
 
   ngOnInit(): void {
-    let id: string = this.route.snapshot.paramMap.get('id');
-    this.initDrone(id);
+    this.droneID = this.route.snapshot.paramMap.get('id');
+    this.initDrone(this.droneID);
   }
 
   initDrone(droneID: string){
