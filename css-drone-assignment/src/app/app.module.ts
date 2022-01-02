@@ -14,6 +14,8 @@ import { DroneDetailComponent } from './drone-detail/drone-detail.component';
 import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { LoginComponent } from './login/login.component';
+import { AuthService } from './services/auth.service';
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
     DroneListComponent,
     AddDroneComponent,
     EditDroneComponent,
-    DroneDetailComponent
+    DroneDetailComponent,
+    LoginComponent,
+    LoginComponent
   ],
   imports: [
     CommonModule,
@@ -33,7 +37,7 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
     AngularFireModule.initializeApp(environment.firebaseConfig, 'angularfs'),
     AngularFirestoreModule
   ],
-  providers: [DroneDataService],
+  providers: [DroneDataService, AuthService],
   bootstrap: [AppComponent]
 })
 
