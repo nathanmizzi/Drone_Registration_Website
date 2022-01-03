@@ -14,7 +14,9 @@ export class AuthService {
 
 
   logIn(hypotheticalUser: User){
-    this.firestoreAuth.signInWithEmailAndPassword(hypotheticalUser.email, hypotheticalUser.password);
+    this.firestoreAuth.signInWithEmailAndPassword(hypotheticalUser.email, hypotheticalUser.password).catch(error => {
+      alert("Incorrect Email or Password");
+    });
     this.isLoggedIn = true;
     this.router.navigate(['/drones']);
   }

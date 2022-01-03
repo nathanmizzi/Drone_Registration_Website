@@ -24,12 +24,12 @@ export class AddDroneComponent implements OnInit {
       modelNumber: ['', [Validators.required]],
       brand: ['', [Validators.required]],
       model: ['', [Validators.required]],
-      ownerIdNumber: ['', [Validators.required]],
+      ownerIdNumber: ['', [Validators.required, Validators.pattern("(.*[A-Za-z])$")]],
       ownerFirstName: ['', [Validators.required]],
       ownerLastName: ['', [Validators.required]],
       ownerContactNumberCountryCode: ['', [Validators.required]],
-      ownerContactNumber: ['', [Validators.required]],
-      ownerEmail: ['', [Validators.required]],
+      ownerContactNumber: ['', [Validators.required, Validators.pattern("^[0-9]*$"), Validators.min(0), Validators.minLength(8)]],
+      ownerEmail: ['', [Validators.required, Validators.email]],
     });
   }
 

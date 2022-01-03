@@ -11,6 +11,13 @@
             id="serialNumber"
             formControlName="serialNumber"
             placeholder="Enter Serial Number">
+            
+            <span class="help-block" *ngIf="
+            (droneForm.get('serialNumber').touched || droneForm.get('serialNumber').dirty) 
+            && droneForm.get('serialNumber').errors">
+                <span class="text-danger" *ngIf="droneForm.get('serialNumber').errors.required"><br>Field is required!</span>
+            </span>
+
         </div>
         </div>
 
@@ -23,6 +30,12 @@
                 id="modelNumber"
                 formControlName="modelNumber"
                 placeholder="Enter Model Number">
+
+                <span class="help-block" *ngIf="
+                (droneForm.get('modelNumber').touched || droneForm.get('modelNumber').dirty) 
+                && droneForm.get('modelNumber').errors">
+                    <span class="text-danger" *ngIf="droneForm.get('modelNumber').errors.required"><br>Field is required!</span>
+                </span>
             </div>
         </div>
 
@@ -38,6 +51,13 @@
                 <option value="Parrot">Parrot</option>
                 <option value="Freefly">Freefly</option>
             </select>
+
+            <span class="help-block ml-3" *ngIf="
+            (droneForm.get('brand').touched || droneForm.get('brand').dirty) 
+            && droneForm.get('brand').errors">
+                <span class="text-danger" *ngIf="droneForm.get('brand').errors.required"><br>Field is required!</span>
+            </span>
+
         </div>
         </div>
 
@@ -50,6 +70,13 @@
                 id="model"
                 formControlName="model"
                 placeholder="Enter Model">
+
+                <span class="help-block" *ngIf="
+                (droneForm.get('model').touched || droneForm.get('model').dirty) 
+                && droneForm.get('model').errors">
+                    <span class="text-danger" *ngIf="droneForm.get('model').errors.required"><br>Field is required!</span>
+                </span>
+
             </div>
         </div>
 
@@ -62,6 +89,13 @@
                 id="ownerIdNumber"
                 formControlName="ownerIdNumber"
                 placeholder="Enter ID Number">
+
+                <span class="help-block" *ngIf="
+                (droneForm.get('ownerIdNumber').touched || droneForm.get('ownerIdNumber').dirty) 
+                && droneForm.get('ownerIdNumber').errors">
+                    <span class="text-danger" *ngIf="droneForm.get('ownerIdNumber').errors.required"><br>Field is required!</span>
+                    <span class="text-danger" *ngIf="droneForm.get('ownerIdNumber').errors.pattern"><br>Must End with a alphabetical character!</span>
+                </span>
             </div>
         </div>
 
@@ -74,6 +108,12 @@
                 id="ownerFirstName"
                 formControlName="ownerFirstName"
                 placeholder="Enter First Name">
+
+                <span class="help-block" *ngIf="
+                (droneForm.get('ownerFirstName').touched || droneForm.get('ownerFirstName').dirty) 
+                && droneForm.get('ownerFirstName').errors">
+                    <span class="text-danger" *ngIf="droneForm.get('ownerFirstName').errors.required"><br>Field is required!</span>
+                </span>
             </div>
         </div>
 
@@ -86,6 +126,12 @@
                 id="ownerLastName"
                 formControlName="ownerLastName"
                 placeholder="Enter Last Name">
+
+                <span class="help-block" *ngIf="
+                (droneForm.get('ownerLastName').touched || droneForm.get('ownerLastName').dirty) 
+                && droneForm.get('ownerLastName').errors">
+                    <span class="text-danger" *ngIf="droneForm.get('ownerLastName').errors.required"><br>Field is required!</span>
+                </span>
             </div>
         </div>
 
@@ -98,6 +144,12 @@
                 id="ownerContactNumberCountryCode"
                 formControlName="ownerContactNumberCountryCode"
                 placeholder="Enter Country Code">
+
+                <span class="help-block" *ngIf="
+                (droneForm.get('ownerContactNumberCountryCode').touched || droneForm.get('ownerContactNumberCountryCode').dirty) 
+                && droneForm.get('ownerContactNumberCountryCode').errors">
+                    <span class="text-danger" *ngIf="droneForm.get('ownerContactNumberCountryCode').errors.required"><br>Field is required!</span>
+                </span>
             </div>
         </div>
 
@@ -110,6 +162,15 @@
                 id="ownerContactNumber"
                 formControlName="ownerContactNumber"
                 placeholder="Enter Contact Number">
+
+                <span class="help-block" *ngIf="
+                (droneForm.get('ownerContactNumber').touched || droneForm.get('ownerContactNumber').dirty) 
+                && droneForm.get('ownerContactNumber').errors">
+                    <span class="text-danger" *ngIf="droneForm.get('ownerContactNumber').errors.required"><br>Field is required!</span>
+                    <span class="text-danger" *ngIf="droneForm.get('ownerContactNumber').errors.pattern"><br>Field must be numeric!</span>
+                    <span class="text-danger" *ngIf="droneForm.get('ownerContactNumber').errors.min"><br>Field Cant Be A negative Number!</span>
+                    <span class="text-danger" *ngIf="droneForm.get('ownerContactNumber').errors.minlength"><br>Field Must be at least 8 characters!</span>
+                </span>
             </div>
         </div>
 
@@ -122,6 +183,13 @@
                 id="ownerEmail"
                 formControlName="ownerEmail"
                 placeholder="Enter Email">
+
+                <span class="help-block" *ngIf="
+                (droneForm.get('ownerEmail').touched || droneForm.get('ownerEmail').dirty) 
+                && droneForm.get('ownerEmail').errors">
+                    <span class="text-danger" *ngIf="droneForm.get('ownerEmail').errors.required"><br>Field is required!</span>
+                    <span class="text-danger" *ngIf="droneForm.get('ownerEmail').errors.email"><br>Field must be a valid email!</span>
+                </span>
             </div>
         </div>
 
@@ -129,5 +197,5 @@
 
     <p class="mt-5">**************************************************************************************</p>
 
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" [disabled]="!droneForm.valid" class="btn btn-primary">Submit</button>
   </form>

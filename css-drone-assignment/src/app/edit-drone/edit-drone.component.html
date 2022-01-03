@@ -11,6 +11,13 @@
                 id="serialNumber"
                 formControlName="serialNumber"
                 placeholder="Enter Serial Number">
+
+                <span class="help-block" *ngIf="
+                (editDroneForm.get('serialNumber').touched || editDroneForm.get('serialNumber').dirty) 
+                && editDroneForm.get('serialNumber').errors">
+                    <span class="text-danger" *ngIf="editDroneForm.get('serialNumber').errors.required"><br>Field is required!</span>
+                </span>
+    
             </div>
         </div>
 
@@ -23,6 +30,12 @@
                 id="modelNumber"
                 formControlName="modelNumber"
                 placeholder="Enter Model Number">
+
+                <span class="help-block" *ngIf="
+                (editDroneForm.get('modelNumber').touched || editDroneForm.get('modelNumber').dirty) 
+                && editDroneForm.get('modelNumber').errors">
+                    <span class="text-danger" *ngIf="editDroneForm.get('modelNumber').errors.required"><br>Field is required!</span>
+                </span>
             </div>
         </div>
 
@@ -33,6 +46,12 @@
                 <select formControlName="brand" name="brand" id="brand"> 
                     <option *ngFor="let brand of droneBrands" [selected]="brand === drone.brand" [value]="brand">{{brand}}</option>
                 </select>
+
+                <span class="help-block ml-3" *ngIf="
+                (editDroneForm.get('brand').touched || editDroneForm.get('brand').dirty) 
+                && editDroneForm.get('brand').errors">
+                    <span class="text-danger" *ngIf="editDroneForm.get('brand').errors.required"><br>Field is required!</span>
+                </span>
             </div>
         </div>
 
@@ -45,6 +64,12 @@
                 id="model"
                 formControlName="model"
                 placeholder="Enter Model">
+
+                <span class="help-block" *ngIf="
+                (editDroneForm.get('model').touched || editDroneForm.get('model').dirty) 
+                && editDroneForm.get('model').errors">
+                    <span class="text-danger" *ngIf="editDroneForm.get('model').errors.required"><br>Field is required!</span>
+                </span>
             </div>
         </div>
 
@@ -57,6 +82,13 @@
                 id="ownerIdNumber"
                 formControlName="ownerIdNumber"
                 placeholder="Enter ID Number">
+
+                <span class="help-block" *ngIf="
+                (editDroneForm.get('ownerIdNumber').touched || editDroneForm.get('ownerIdNumber').dirty) 
+                && editDroneForm.get('ownerIdNumber').errors">
+                    <span class="text-danger" *ngIf="editDroneForm.get('ownerIdNumber').errors.required"><br>Field is required!</span>
+                    <span class="text-danger" *ngIf="editDroneForm.get('ownerIdNumber').errors.pattern"><br>Must End with a alphabetical character!</span>
+                </span>
             </div>
         </div>
 
@@ -69,6 +101,12 @@
                 id="ownerFirstName"
                 formControlName="ownerFirstName"
                 placeholder="Enter First Name">
+
+                <span class="help-block" *ngIf="
+                (editDroneForm.get('ownerFirstName').touched || editDroneForm.get('ownerFirstName').dirty) 
+                && editDroneForm.get('ownerFirstName').errors">
+                    <span class="text-danger" *ngIf="editDroneForm.get('ownerFirstName').errors.required"><br>Field is required!</span>
+                </span>
             </div>
         </div>
 
@@ -81,6 +119,12 @@
                 id="ownerLastName"
                 formControlName="ownerLastName"
                 placeholder="Enter Last Name">
+
+                <span class="help-block" *ngIf="
+                (editDroneForm.get('ownerLastName').touched || editDroneForm.get('ownerLastName').dirty) 
+                && editDroneForm.get('ownerLastName').errors">
+                    <span class="text-danger" *ngIf="editDroneForm.get('ownerLastName').errors.required"><br>Field is required!</span>
+                </span>
             </div>
         </div>
 
@@ -93,6 +137,12 @@
                 id="ownerContactNumberCountryCode"
                 formControlName="ownerContactNumberCountryCode"
                 placeholder="Enter Country Code">
+
+                <span class="help-block" *ngIf="
+                (editDroneForm.get('ownerContactNumberCountryCode').touched || editDroneForm.get('ownerContactNumberCountryCode').dirty) 
+                && editDroneForm.get('ownerContactNumberCountryCode').errors">
+                    <span class="text-danger" *ngIf="editDroneForm.get('ownerContactNumberCountryCode').errors.required"><br>Field is required!</span>
+                </span>
             </div>
         </div>
 
@@ -105,6 +155,15 @@
                 id="ownerContactNumber"
                 formControlName="ownerContactNumber"
                 placeholder="Enter Contact Number">
+
+                <span class="help-block" *ngIf="
+                (editDroneForm.get('ownerContactNumber').touched || editDroneForm.get('ownerContactNumber').dirty) 
+                && editDroneForm.get('ownerContactNumber').errors">
+                    <span class="text-danger" *ngIf="editDroneForm.get('ownerContactNumber').errors.required"><br>Field is required!</span>
+                    <span class="text-danger" *ngIf="editDroneForm.get('ownerContactNumber').errors.pattern"><br>Field must be numeric!</span>
+                    <span class="text-danger" *ngIf="editDroneForm.get('ownerContactNumber').errors.min"><br>Field Cant Be A negative Number!</span>
+                    <span class="text-danger" *ngIf="editDroneForm.get('ownerContactNumber').errors.minlength"><br>Field Must be at least 8 characters!</span>
+                </span>
             </div>
         </div>
 
@@ -117,6 +176,13 @@
                 id="ownerEmail"
                 formControlName="ownerEmail"
                 placeholder="Enter Email">
+
+                <span class="help-block" *ngIf="
+                (editDroneForm.get('ownerEmail').touched || editDroneForm.get('ownerEmail').dirty) 
+                && editDroneForm.get('ownerEmail').errors">
+                    <span class="text-danger" *ngIf="editDroneForm.get('ownerEmail').errors.required"><br>Field is required!</span>
+                    <span class="text-danger" *ngIf="editDroneForm.get('ownerEmail').errors.email"><br>Field must be a valid email!</span>
+                </span>
             </div>
         </div>
 
@@ -124,5 +190,5 @@
 
     <p class="mt-5">**************************************************************************************</p>
 
-    <button type="submit" class="btn btn-primary">Update</button>
+    <button type="submit" [disabled]="!editDroneForm.valid" class="btn btn-primary">Update</button>
   </form>

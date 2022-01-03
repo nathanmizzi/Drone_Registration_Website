@@ -1,4 +1,4 @@
-<div class="table-responsive mt-3">
+<div class="table-responsive mt-3" id="drone-table">
     <table class="table">
         <thead>
                 <tr>
@@ -22,3 +22,11 @@
         </tbody>
     </table>
 </div>
+
+<span>
+    <button class="btn btn-success me-5" (click)="saveListToExcel()">Save Drones as Excel File</button>
+</span>
+
+<span class="ml-5">
+    <button class="btn btn-danger" (click)="saveListToPDF()">Save Drones as PDF File</button>
+</span>

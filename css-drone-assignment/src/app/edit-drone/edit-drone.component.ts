@@ -36,12 +36,12 @@ export class EditDroneComponent implements OnInit {
         modelNumber: [droneFromDb.modelNumber, [Validators.required]],
         brand: [droneFromDb.brand, [Validators.required]],
         model: [droneFromDb.model, [Validators.required]],
-        ownerIdNumber: [droneFromDb.ownerIdNumber, [Validators.required]],
+        ownerIdNumber: [droneFromDb.ownerIdNumber, [Validators.required, Validators.pattern("(.*[A-Za-z])$")]],
         ownerFirstName: [droneFromDb.ownerFirstName, [Validators.required]],
         ownerLastName: [droneFromDb.ownerLastName, [Validators.required]],
         ownerContactNumberCountryCode: [droneFromDb.ownerContactNumberCountryCode, [Validators.required]],
-        ownerContactNumber: [droneFromDb.ownerContactNumber, [Validators.required]],
-        ownerEmail: [droneFromDb.ownerEmail, [Validators.required]],
+        ownerContactNumber: [droneFromDb.ownerContactNumber, [Validators.required, Validators.pattern("^[0-9]*$"), Validators.min(0), Validators.minLength(8)]],
+        ownerEmail: [droneFromDb.ownerEmail, [Validators.required, Validators.email]],
       });
     });
   }
