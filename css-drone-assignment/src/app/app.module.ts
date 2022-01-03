@@ -16,6 +16,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { LoginComponent } from './login/login.component';
 import { AuthService } from './services/auth.service';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
 
 @NgModule({
@@ -25,7 +26,6 @@ import { AuthService } from './services/auth.service';
     AddDroneComponent,
     EditDroneComponent,
     DroneDetailComponent,
-    LoginComponent,
     LoginComponent
   ],
   imports: [
@@ -35,7 +35,8 @@ import { AuthService } from './services/auth.service';
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig, 'angularfs'),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    AngularFireAuthModule
   ],
   providers: [DroneDataService, AuthService],
   bootstrap: [AppComponent]

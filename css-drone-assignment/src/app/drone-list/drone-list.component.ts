@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Drone } from '../dto/drone.dto';
+import { AuthService } from '../services/auth.service';
 import { DroneDataService } from '../services/drone-data.service';
 
 @Component({
@@ -12,13 +13,22 @@ export class DroneListComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
     private router: Router,
-    private droneService: DroneDataService) { 
+    private droneService: DroneDataService,
+    private authService: AuthService) { 
   }
 
-  drones: Drone[]  =[];
+  drones: Drone[] = [];
+  currentUserRole: string;
 
   ngOnInit(): void {
+    this.setCurrentUserRole();
     this.initialiseDroneArray();
+  }
+
+  setCurrentUserRole(){
+    this.currentUserRole = this.authService.getCurrentUserRole();
+    console.log(this.currentUserRole);
+    console.log(this.authService.getCurrentUserRole());
   }
 
   initialiseDroneArray(): void{
