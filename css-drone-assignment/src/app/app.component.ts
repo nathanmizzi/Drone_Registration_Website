@@ -18,23 +18,33 @@ export class AppComponent implements OnInit{
 
   title = 'Drone Registry';
   currentUserRole: string;
-  userLogged: boolean;
+  isLoggedIn: boolean = false;
 
   ngOnInit(): void {
-    this.userLogged = false;
-
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {    
-          if(this.authService.isUserLoggedIn()){
-            this.userLogged = true;
-          }else{
-            this.userLogged = false;
-          }
+    this.router.events.subscribe(event =>{
+      if (event instanceof NavigationEnd){
+        if(this.authService.isLoggedIn){
+          this.authService.firestoreAuth.user.subscribe(async currentUser => {
+            if(currentUser != null){
+              this.isLoggedIn = true;
+            }
+    
+            await currentUser.getIdTokenResult().then(idTokenResult => {
+              this.setUserRole(idTokenResult.claims['role']);
+            })
+          });
+        }
       }
-    });
+   })
+  }
+
+  setUserRole(asyncParam: string){
+    this.currentUserRole = asyncParam;
   }
 
   signOut(): void{
+    this.isLoggedIn = false;
+    this.currentUserRole = "";
     this.authService.logOut();
   }
 }

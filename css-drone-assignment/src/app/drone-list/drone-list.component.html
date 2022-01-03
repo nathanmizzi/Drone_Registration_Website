@@ -16,8 +16,8 @@
                 <td>{{drone.ownerFirstName}}</td>
                 <td>{{drone.ownerLastName}}</td>
                 <td><button class="btn btn-primary" (click)="getDroneDetails(drone.id)">View</button></td>
-                <td><button class="btn btn-primary" [disabled]="currentUserRole != 'dataentrymanager'" [hidden]="currentUserRole != 'dataentrymanager'" (click)="updateDroneDetails(drone.id)">Update</button></td>
-                <td><button class="btn btn-primary" [disabled]="currentUserRole != 'dataentrymanager'" [hidden]="currentUserRole != 'dataentrymanager'" (click)="deleteDrone(drone.id)">Delete</button></td>
+                <td><button class="btn btn-primary" [hidden]="currentUserRole != 'dataentrymanager' && currentUserRole != 'systemadmin'" (click)="updateDroneDetails(drone.id)">Update</button></td>
+                <td><button class="btn btn-primary" [hidden]="currentUserRole != 'systemadmin'" (click)="deleteDrone(drone.id)">Delete</button></td>
             </tr>
         </tbody>
     </table>

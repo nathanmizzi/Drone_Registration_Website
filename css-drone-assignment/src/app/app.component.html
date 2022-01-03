@@ -5,10 +5,10 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link" routerLink="/drones/add" >Add Drone</a>
+      <a class="nav-item nav-link" [hidden]="currentUserRole != 'dataentrymanager' && currentUserRole != 'systemadmin'" routerLink="/drones/add" >Add Drone</a>
       <a class="nav-item nav-link" routerLink="/drones" >View Drones</a>
-      <a class="nav-item nav-link" [hidden]="!userLogged" (click)="signOut()">Sign Out</a>
-      <a class="nav-item nav-link float-right" [hidden]="userLogged" routerLink="/login" >Log In</a>
+      <a class="nav-item nav-link" [hidden]="!isLoggedIn" (click)="signOut()">Sign Out</a>
+      <a class="nav-item nav-link float-right" [hidden]="isLoggedIn" routerLink="/login" >Log In</a>
     </div>
   </div>
 </nav>

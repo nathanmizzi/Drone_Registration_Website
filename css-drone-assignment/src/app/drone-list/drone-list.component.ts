@@ -19,16 +19,26 @@ export class DroneListComponent implements OnInit {
 
   drones: Drone[] = [];
   currentUserRole: string;
+  isLoggedIn: boolean = false;
 
   ngOnInit(): void {
-    this.setCurrentUserRole();
+    if(this.authService.isLoggedIn){
+      this.authService.firestoreAuth.user.subscribe(async currentUser => {
+        if(currentUser != null){
+          this.isLoggedIn = true;
+        }
+
+        await currentUser.getIdTokenResult().then(idTokenResult => {
+          this.setUserRole(idTokenResult.claims['role']);
+        })
+      });
+    }
+
     this.initialiseDroneArray();
   }
 
-  setCurrentUserRole(){
-    this.currentUserRole = this.authService.getCurrentUserRole();
-    console.log(this.currentUserRole);
-    console.log(this.authService.getCurrentUserRole());
+  setUserRole(asyncParam: string){
+    this.currentUserRole = asyncParam;
   }
 
   initialiseDroneArray(): void{
