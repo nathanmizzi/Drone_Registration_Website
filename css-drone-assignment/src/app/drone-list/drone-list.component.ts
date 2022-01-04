@@ -63,14 +63,20 @@ export class DroneListComponent implements OnInit {
   }
 
   saveListToExcel(){
-    let tableElement = document.getElementById('drone-table'); 
+    var data = [];
 
-    const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet (tableElement);
+    data.push(["Serial Number","Brand","Owner's Name","	Owner's Surname"]);
+
+    for(var i = 0; i < this.drones.length; i++){
+      data.push([this.drones[i].serialNumber,this.drones[i].brand,this.drones[i].ownerFirstName,this.drones[i].ownerLastName]);
+    }
+
+    const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(data, {skipHeader: true});
 
     const wb: XLSX.WorkBook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, 'ListOfAllDrones');
 
-    XLSX.writeFile(wb, "Drone-Data");
+    XLSX.writeFile(wb, "Drone-Data.xlsx");
   }
 
   saveListToPDF(){
@@ -98,7 +104,6 @@ export class DroneListComponent implements OnInit {
     })
 
     doc.save('myteamdetail.pdf');
-
   }
 
 }
