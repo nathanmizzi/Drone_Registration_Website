@@ -7,7 +7,7 @@ It makes use of a Firestore database to store its data, and has a role based aut
 
 The following accounts exist: 
 
-Admin: Email: test.sysadmin@test.com,  Password: Pa$$w0rd (Can Read, Write and Delte Data)
+Admin: Email: test.sysadmin@test.com,  Password: Pa$$w0rd (Can Read, Write and Delete Data)
 
 Manager: Email: test.manager@test.com, Password: Pa$$w0rd (Can Read, and Write to Data) 
 
